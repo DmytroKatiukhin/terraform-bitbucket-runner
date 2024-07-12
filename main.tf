@@ -1,16 +1,17 @@
-resource "kubernetes_namespace" "runner_namespace" {
+resource "kubernetes_namespace" "bitbucket" {
   metadata {
-    name = var.runner_namespace
+    name = var.namespace
   }
 }
 
 resource "kubernetes_secret" "runner_oauth_credentials" {
   metadata {
-    name = var.oauth_credentials_name
+    name      = var.secret_name
+    namespace = kubernetes_namespace.bitbucket.metadata[0].name
     labels = {
-      accountUuid    = var.account_uuid
-      repositoryUuid = var.repository_uuid
-      runnerUuid     = var.runner_uuid
+      accountUuid     = var.account_uuid
+      repositoryUuid  = var.repository_uuid
+      runnerUuid      = var.runner_uuid
     }
   }
 
@@ -22,39 +23,43 @@ resource "kubernetes_secret" "runner_oauth_credentials" {
 
 resource "kubernetes_job" "runner" {
   metadata {
-    name = var.runner_name
+    name      = var.job_name
+    namespace = kubernetes_namespace.bitbucket.metadata[0].name
   }
 
   spec {
     template {
       metadata {
         labels = {
-          accountUuid    = var.account_uuid
-          repositoryUuid = var.repository_uuid
-          runnerUuid     = var.runner_uuid
+          accountUuid     = var.account_uuid
+          repositoryUuid  = var.repository_uuid
+          runnerUuid      = var.runner_uuid
         }
       }
 
       spec {
         volume {
           name = "tmp"
+          empty_dir {}
         }
 
         volume {
           name = "docker-containers"
+          empty_dir {}
         }
 
         volume {
           name = "var-run"
+          empty_dir {}
         }
 
         container {
-          name  = "runner"
-          image = var.runner_image
+          name  = var.container_name
+          image = "docker-public.packages.atlassian.com/sox/atlassian/bitbucket-pipelines-runner"
 
           env {
             name  = "ACCOUNT_UUID"
-            value = "{${var.repository_uuid}}"
+            value = "{${var.account_uuid}}"
           }
 
           env {
@@ -69,7 +74,6 @@ resource "kubernetes_job" "runner" {
 
           env {
             name = "OAUTH_CLIENT_ID"
-
             value_from {
               secret_key_ref {
                 name = kubernetes_secret.runner_oauth_credentials.metadata[0].name
@@ -80,7 +84,6 @@ resource "kubernetes_job" "runner" {
 
           env {
             name = "OAUTH_CLIENT_SECRET"
-
             value_from {
               secret_key_ref {
                 name = kubernetes_secret.runner_oauth_credentials.metadata[0].name
@@ -91,7 +94,7 @@ resource "kubernetes_job" "runner" {
 
           env {
             name  = "WORKING_DIRECTORY"
-            value = var.working_directory
+            value = "/tmp"
           }
 
           volume_mount {
@@ -113,7 +116,7 @@ resource "kubernetes_job" "runner" {
 
         container {
           name  = "docker-in-docker"
-          image = var.docker_in_docker_image
+          image = "docker:27.0.3-dind"
 
           volume_mount {
             name       = "tmp"
