@@ -1,3 +1,8 @@
+variable "runner_namespace" {
+  description = "Namespace of the Kubernetes Job"
+  type        = string
+}
+
 variable "runner_name" {
   description = "Name of the Kubernetes Job"
   type        = string
