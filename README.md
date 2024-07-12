@@ -1,4 +1,4 @@
-# bitbucket-selfhosted-runner
+# Bitbucket-selfhosted-runner
 SelfHosted Bitbucket Runner with Job, Pod and secret
 # Terraform Module for Kubernetes
 
