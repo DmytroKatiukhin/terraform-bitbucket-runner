@@ -1,8 +1,8 @@
-# bitbucket_runner
-Bitbucket Runner with Job and Pod
+# bitbucket-runner
+SelfHosted Bitbucket Runner with Job and Pod
 # Custom Terraform Module for Kubernetes Job and Secret
 
-This Terraform module creates a Kubernetes job and a secret for Bitbucket Pipelines runner.
+This Terraform module creates a Kubernetes job and a secret for Bitbucket SelfHosted Pipeline runner.
 
 # Uncommit namespace, secret_name, job_name, container_name if not default values
 
