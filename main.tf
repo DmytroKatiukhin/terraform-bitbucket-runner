@@ -1,3 +1,9 @@
+resource "kubernetes_namespace" "runner_namespace" {
+  metadata {
+    name = "var.namespace"
+  }
+}
+
 resource "kubernetes_secret" "runner_oauth_credentials" {
   metadata {
     name = var.oauth_credentials_name
