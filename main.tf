@@ -1,6 +1,6 @@
 resource "kubernetes_namespace" "runner_namespace" {
   metadata {
-    name = "var.namespace"
+    name = "var.runner_namespace"
   }
 }
 
