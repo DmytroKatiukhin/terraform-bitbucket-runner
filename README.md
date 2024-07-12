@@ -9,22 +9,13 @@ This Terraform module creates a Kubernetes job and a secret for Bitbucket Pipeli
 ```hcl
 module "runner" {
   source = "git::https://github.com/koklushkin/bitbucket_runner.git"
-
-
   namespace           = "bitbucket"
   secret_name         = "runner-oauth-credentials"
-  job_name            = "runner"
+  job_name            = "k8s"
   container_name      = "runner"
-
-  runner_namespace       = "bitbucket"
-  runner_name            = "runner"
-  account_uuid           = "" #string
-  repository_uuid        = "" #string
-  runner_uuid            = "" #string
-  oauth_client_id        = "" #string
-  oauth_client_secret    = "" #string
-  oauth_credentials_name = "runner-oauth-credentials"
-  runner_image           = "docker-public.packages.atlassian.com/sox/atlassian/bitbucket-pipelines-runner"
-  docker_in_docker_image = "docker:27.0.3-dind"
-  working_directory      = "/tmp"
+  account_uuid        = ""
+  repository_uuid     = ""
+  runner_uuid         = ""
+  oauth_client_id     = ""
+  oauth_client_secret = ""
 }
