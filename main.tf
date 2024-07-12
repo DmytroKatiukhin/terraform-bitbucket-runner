@@ -2,14 +2,14 @@ resource "kubernetes_secret" "runner_oauth_credentials" {
   metadata {
     name = var.oauth_credentials_name
     labels = {
-      accountUuid = var.account_uuid
+      accountUuid    = var.account_uuid
       repositoryUuid = var.repository_uuid
-      runnerUuid = var.runner_uuid
+      runnerUuid     = var.runner_uuid
     }
   }
 
   data = {
-    oauthClientId = var.oauth_client_id
+    oauthClientId     = var.oauth_client_id
     oauthClientSecret = var.oauth_client_secret
   }
 }
@@ -23,9 +23,9 @@ resource "kubernetes_job" "runner" {
     template {
       metadata {
         labels = {
-          accountUuid = var.account_uuid
+          accountUuid    = var.account_uuid
           repositoryUuid = var.repository_uuid
-          runnerUuid = var.runner_uuid
+          runnerUuid     = var.runner_uuid
         }
       }
 
