@@ -48,7 +48,7 @@ resource "kubernetes_job" "runner" {
 
           env {
             name  = "ACCOUNT_UUID"
-            value = '{ var.account_uuid }'
+            value = "{{`{`}}{{ var.accountUuid }}{{`}`}}"
           }
 
           env {
