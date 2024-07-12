@@ -10,7 +10,7 @@ This Terraform module creates a Kubernetes job and a secret for Bitbucket SelfHo
 
 ```hcl
 module "runner" {
-  source = "git::https://github.com/koklushkin/bitbucket_runner.git"
+  source = "git::https://github.com/koklushkin/terraform-bitbucket-module .git"
   #namespace           = "" #default namespace "bitbucket"
   #secret_name         = "" #default secret_name "runner-oauth-credentials"
   #job_name            = "" #default job_name "runner"
