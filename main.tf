@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "runner_namespace" {
+resource "kubernetes_namespace" "runner.namespace" {
   metadata {
     name = "var.runner_namespace"
   }
