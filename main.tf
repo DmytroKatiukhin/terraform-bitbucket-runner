@@ -9,9 +9,9 @@ resource "kubernetes_secret" "runner_oauth_credentials" {
     name      = var.secret_name
     namespace = kubernetes_namespace.bitbucket.metadata[0].name
     labels = {
-      accountUuid     = var.account_uuid
-      repositoryUuid  = var.repository_uuid
-      runnerUuid      = var.runner_uuid
+      accountUuid    = var.account_uuid
+      repositoryUuid = var.repository_uuid
+      runnerUuid     = var.runner_uuid
     }
   }
 
@@ -31,9 +31,9 @@ resource "kubernetes_job" "runner" {
     template {
       metadata {
         labels = {
-          accountUuid     = var.account_uuid
-          repositoryUuid  = var.repository_uuid
-          runnerUuid      = var.runner_uuid
+          accountUuid    = var.account_uuid
+          repositoryUuid = var.repository_uuid
+          runnerUuid     = var.runner_uuid
         }
       }
 
