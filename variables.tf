@@ -1,54 +1,48 @@
-variable "runner_namespace" {
-  description = "Namespace of the Kubernetes Job"
+variable "namespace" {
+  description = "Namespace for the resources"
   type        = string
+  default     = "bitbucket"
 }
 
-variable "runner_name" {
+variable "secret_name" {
+  description = "Name of the Kubernetes Secret"
+  type        = string
+  default     = "runner-oauth-credentials"
+}
+
+variable "job_name" {
   description = "Name of the Kubernetes Job"
   type        = string
+  default     = "runner"
+}
+
+variable "container_name" {
+  description = "Name of the Kubernetes container"
+  type        = string
+  default     = "runner"
 }
 
 variable "account_uuid" {
-  description = "Account UUID"
+  description = "UUID for the account"
   type        = string
 }
 
 variable "repository_uuid" {
-  description = "Repository UUID"
+  description = "UUID for the repository"
   type        = string
 }
 
 variable "runner_uuid" {
-  description = "Runner UUID"
+  description = "UUID for the runner"
   type        = string
 }
 
 variable "oauth_client_id" {
-  description = "OAuth Client ID"
+  description = "OAuth client ID"
   type        = string
 }
 
 variable "oauth_client_secret" {
-  description = "OAuth Client Secret"
-  type        = string
-}
-
-variable "oauth_credentials_name" {
-  description = "Name of the Kubernetes Secret for OAuth credentials"
-  type        = string
-}
-
-variable "runner_image" {
-  description = "Docker image for the runner"
-  type        = string
-}
-
-variable "docker_in_docker_image" {
-  description = "Docker image for Docker-in-Docker"
-  type        = string
-}
-
-variable "working_directory" {
-  description = "Working directory for the runner"
+  description = "OAuth client secret"
   type        = string
 }
