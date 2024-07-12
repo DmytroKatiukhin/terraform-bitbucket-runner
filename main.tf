@@ -48,17 +48,17 @@ resource "kubernetes_job" "runner" {
 
           env {
             name  = "ACCOUNT_UUID"
-            value = "{${var.account_uuid}}"
+            value = '{${var.account_uuid}}'
           }
 
           env {
             name  = "REPOSITORY_UUID"
-            value = "{${var.repository_uuid}}"
+            value = '{${var.repository_uuid}}'
           }
 
           env {
             name  = "RUNNER_UUID"
-            value = "{${var.runner_uuid}}"
+            value = '{${var.runner_uuid}}'
           }
 
           env {
