@@ -1,7 +1,6 @@
-# Bitbucket-selfhosted-runner
-Bitbucket SelfHosted Runner
+# Bitbucket selfhosted runner
+Bitbucket Runner
 # Terraform Module for Kubernetes
-
 This Terraform module creates a Kubernetes Bitbucket SelfHosted Pipeline runner.
 
 # Uncommit namespace, secret_name, job_name, container_name if not default values
