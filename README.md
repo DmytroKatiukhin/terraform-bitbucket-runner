@@ -1,12 +1,8 @@
-# Terraform Bitbucket selfhosted runner
-Bitbucket Runner
 # Terraform Module for Kubernetes
 Terraform module to set up Bitbucket self-hosted runner on a Kubernetes cluster 
 
-# Uncommit namespace, secret_name, job_name, container_name if not default values
-
 ## Usage
-
+# Uncommit namespace, secret_name, job_name, container_name if not default values
 ```hcl
 module "runner" {
   source              = "koklushkin/terraform-bitbucket-runner/bitbucket"
