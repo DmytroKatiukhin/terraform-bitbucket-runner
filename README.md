@@ -1,7 +1,7 @@
-# Bitbucket selfhosted runner
+# Terraform Bitbucket selfhosted runner
 Bitbucket Runner
 # Terraform Module for Kubernetes
-This Terraform module creates a Kubernetes Bitbucket SelfHosted Pipeline runner.
+Terraform module to set up Bitbucket self-hosted runner on a Kubernetes cluster 
 
 # Uncommit namespace, secret_name, job_name, container_name if not default values
 
@@ -9,7 +9,7 @@ This Terraform module creates a Kubernetes Bitbucket SelfHosted Pipeline runner.
 
 ```hcl
 module "runner" {
-  source              = "koklushkin/selfhosted-runner-module/bitbucket"
+  source              = "koklushkin/terraform-bitbucket-runner/bitbucket"
   #namespace           = "" #default namespace "bitbucket"
   #secret_name         = "" #default secret_name "runner-oauth-credentials"
   #job_name            = "" #default job_name "runner"
